@@ -6,10 +6,12 @@ import { resources } from './lib/Resource';
 const Character = async (app: PIXI.Application) => {
   // await Load(app);
 
+  const characterSize = 0.5;
+
   // This creates a texture from a 'bunny.png' image
   const bunny = new PIXI.Sprite(resources.playerDown().texture);
 
-  bunny.scale.set(0.5, 0.5);
+  bunny.scale.set(characterSize, characterSize);
 
   console.log(bunny.width, bunny.height);
 
@@ -57,41 +59,41 @@ const Character = async (app: PIXI.Application) => {
     }
 
     if (dir === 0) {
-      bunny.scale.x = -1;
+      bunny.scale.x = -characterSize;
       bunny.texture = resources.playerRight().texture;
     } else if (dir === 1) {
-      bunny.scale.x = -1;
+      bunny.scale.x = -characterSize;
       bunny.texture = resources.playerRightDown().texture;
     } else if (dir === 2) {
-      bunny.scale.x = -1;
+      bunny.scale.x = -characterSize;
       bunny.texture = resources.playerDownLeft().texture;
     } else if (dir === 3) {
       bunny.texture = resources.playerDown().texture;
-      bunny.scale.x = -1;
+      bunny.scale.x = -characterSize;
     } else if (dir === 4) {
       bunny.texture = resources.playerDownLeft().texture;
-      bunny.scale.x = 1;
+      bunny.scale.x = characterSize;
     } else if (dir === 5) {
       bunny.texture = resources.playerRightDown().texture;
-      bunny.scale.x = 1;
+      bunny.scale.x = characterSize;
     } else if (dir === 6) {
       bunny.texture = resources.playerRight().texture;
-      bunny.scale.x = 1;
+      bunny.scale.x = characterSize;
     } else if (dir === 7) {
       bunny.texture = resources.playerRightUp().texture;
-      bunny.scale.x = 1;
+      bunny.scale.x = characterSize;
     } else if (dir === 8) {
       bunny.texture = resources.playerUpLeft().texture;
-      bunny.scale.x = 1;
+      bunny.scale.x = characterSize;
     } else if (dir === 9) {
       bunny.texture = resources.playerUp().texture;
-      bunny.scale.x = 1;
+      bunny.scale.x = characterSize;
     } else if (dir === 10) {
       bunny.texture = resources.playerUpLeft().texture;
-      bunny.scale.x = -1;
+      bunny.scale.x = -characterSize;
     } else if (dir === 11) {
       bunny.texture = resources.playerRightUp().texture;
-      bunny.scale.x = -1;
+      bunny.scale.x = -characterSize;
     }
   });
 };
