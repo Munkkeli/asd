@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 import * as Input from './Input';
 import * as Math from './Math';
 import { resources } from './lib/Resource';
+import { viewport } from './Viewport';
 
 const Character = async (app: PIXI.Application) => {
   // await Load(app);
@@ -24,11 +25,15 @@ const Character = async (app: PIXI.Application) => {
   bunny.anchor.y = 0.5;
 
   // Add the bunny to the scene we are building
-  app.stage.addChild(bunny);
+  viewport.addChild(bunny);
 
   // Listen for frame updates
   app.ticker.add(() => {
     //console.log(Input.getMousePosition(app.renderer));
+
+    const viewportVector = [viewport.left, viewport.top];
+
+    console.log(viewport.top, viewport.left);
 
     if (Input.getInputDown('w')) {
       bunny.y -= 5;

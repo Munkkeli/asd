@@ -4,6 +4,10 @@ import { Init } from './lib/Resource';
 
 import * as Input from './Input';
 import { Character } from './Character';
+import { resources } from './lib/Resource';
+import { viewport } from './Viewport';
+
+
 
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
@@ -21,6 +25,18 @@ resize();
 (async () => {
   await Init(app);
 
+
+
+  app.stage.addChild(viewport)
+
+  viewport
+    .drag()
+    .pinch()
+    .wheel()
+    .decelerate()
+
+  const background = new PIXI.Sprite(resources.debugMap().texture);
+  viewport.addChild(background);
   // Setup character
   Character(app);
 })();
