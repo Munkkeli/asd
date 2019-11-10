@@ -7,7 +7,7 @@ import { Character } from './Character';
 import { resources } from './lib/Resource';
 import { viewport } from './Viewport';
 
-
+import { environmentColliders, loadColliders } from './Block';
 
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
@@ -25,18 +25,30 @@ resize();
 (async () => {
   await Init(app);
 
+  viewport.on('mousedown', (e: any) => {
+    Input.onMouseDown('Mouse1');
+  });
 
+  viewport.on('mouseup', (e: any) => {
+    Input.onMouseUp('Mouse1');
+  });
 
-  app.stage.addChild(viewport)
+  app.stage.addChild(viewport);
 
   viewport
-    .drag()
     .pinch()
     .wheel()
-    .decelerate()
+    .decelerate();
 
   const background = new PIXI.Sprite(resources.debugMap().texture);
   viewport.addChild(background);
+
+  loadColliders();
+  environmentColliders.forEach(collider => {
+    collider.x -= 200;
+    viewport.addChild(collider);
+  });
+
   // Setup character
   Character(app);
 })();

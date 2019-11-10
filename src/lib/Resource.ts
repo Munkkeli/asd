@@ -56,7 +56,10 @@ const resources = {
   playerRightUp: register('/playertest/05.png'),
   playerUpLeft: register('/playertest/06.png'),
   playerUp: register('/playertest/07.png'),
-  debugMap: register('map.png')
+  debugMap: register('map.png'),
+  pallo: register('asdasdasd.png'),
+  bullet: register('bullet.png'),
+  box: register('test.png')
 };
 
 export { Init, resources };

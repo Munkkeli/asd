@@ -1,4 +1,13 @@
 const keyState: any = {};
+const mouseState: any = {};
+
+const onMouseDown = (key: any) => {
+  mouseState[key] = true;
+};
+
+const onMouseUp = (key: any) => {
+  mouseState[key] = false;
+};
 
 const onKeyDown = (key: any) => {
   if (!keyState[key.key]) console.log(key.key, 'down');
@@ -13,7 +22,11 @@ const onKeyUp = (key: any) => {
 window.addEventListener('keydown', onKeyDown);
 window.addEventListener('keyup', onKeyUp);
 
-const getInputDown = (key: string) => {
+const getMouseDown = (key: string) => {
+  return mouseState[key];
+};
+
+const getKeyDown = (key: string) => {
   return keyState[key];
 };
 
@@ -24,4 +37,12 @@ const getMousePosition = (renderer: any) => {
   return [x, y];
 };
 
-export { onKeyDown, onKeyUp, getInputDown, getMousePosition };
+export {
+  onKeyDown,
+  onMouseUp,
+  onMouseDown,
+  onKeyUp,
+  getKeyDown,
+  getMouseDown,
+  getMousePosition
+};
